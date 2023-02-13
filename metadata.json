@@ -1,0 +1,8 @@
+{
+  "name": "taoky's GNOME customization extension",
+  "description": "Customize GNOME for my personal usage",
+  "uuid": "gnome-custom@taoky.moe",
+  "shell-version": [
+    "43"
+  ]
+}
