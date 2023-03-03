@@ -15,3 +15,9 @@ Support: GNOME 43
 
 - `meta_compositor_is_unredirect_inhibited()` is private method of Meta so extensions cannot get the value of `disable_unredirect_count`.
 - Currently minimize animation is controlled by `MINIMIZE_WINDOW_ANIMATION_TIME` in `js/ui/windowManager.js` in gnome-shell (Default = 400). This may change in future versions of GNOME.
+- When running full-screen games, unredirection may be enabled again. If this happens you can try enabling the monkey patch option in the preferences window. It rewrites unredirection methods in gnome-shell JS layer to no-op.
+
+### Dev notes
+
+- `glib-compile-schemas schemas/` to compile schemas after updating the xml file
+- `xgettext --from-code=UTF-8 --output=po/example.pot *.js` to generate pot (po template) file
