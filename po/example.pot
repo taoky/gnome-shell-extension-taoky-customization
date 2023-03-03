@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-13 21:42+0800\n"
+"POT-Creation-Date: 2023-03-04 04:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,33 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: prefs.js:43
+#: prefs.js:46
 msgid "On extension startup"
 msgstr ""
 
-#: prefs.js:46
+#: prefs.js:49
 msgid "Disable unredirection"
 msgstr ""
 
-#: prefs.js:47
+#: prefs.js:50
 msgid "Disable xwayland pointer gestures"
 msgstr ""
 
-#: prefs.js:48
+#: prefs.js:51
 msgid "Disable minimize animation"
+msgstr ""
+
+#: prefs.js:54
+msgid "Miscellaneous"
+msgstr ""
+
+#: prefs.js:57
+msgid "Monkey patch unredirection functions"
+msgstr ""
+
+#: prefs.js:58
+msgid ""
+"Monkey-patch Meta.enable_unredirect_for_display() and Meta."
+"disable_unredirect_for_display() to no-op. This will only take effect on the "
+"next extension startup."
 msgstr ""

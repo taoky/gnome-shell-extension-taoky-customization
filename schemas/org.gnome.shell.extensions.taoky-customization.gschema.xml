@@ -11,5 +11,8 @@
     <key name="disable-minimize-animation" type="b">
       <default>true</default>
     </key>
+    <key name="monkey-patch-unredirect" type="b">
+      <default>false</default>
+    </key>
   </schema>
 </schemalist>

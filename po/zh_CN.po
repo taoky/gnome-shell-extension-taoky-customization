@@ -18,18 +18,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: prefs.js:43
+#: prefs.js:46
 msgid "On extension startup"
 msgstr "在扩展启动时"
 
-#: prefs.js:46
+#: prefs.js:49
 msgid "Disable unredirection"
 msgstr "关闭 unredirection 特性"
 
-#: prefs.js:47
+#: prefs.js:50
 msgid "Disable xwayland pointer gestures"
 msgstr "关闭 xwayland 下的鼠标手势"
 
-#: prefs.js:48
+#: prefs.js:51
 msgid "Disable minimize animation"
 msgstr "关闭最小化动画"
+
+#: prefs.js:54
+msgid "Miscellaneous"
+msgstr "杂项设置"
+
+#: prefs.js:57
+msgid "Monkey patch unredirection functions"
+msgstr "动态修改 unredirection 相关函数"
+
+#: prefs.js:58
+msgid ""
+"Monkey-patch Meta.enable_unredirect_for_display() and Meta."
+"disable_unredirect_for_display() to no-op. This will only take effect on the "
+"next extension startup."
+msgstr "动态修改 Meta.enable_unredirect_for_display() 和 Meta."
+"disable_unredirect_for_display() 为无操作。这个设置只会在下次扩展启动时生效。"
