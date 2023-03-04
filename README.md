@@ -21,3 +21,4 @@ Support: GNOME 43
 
 - `glib-compile-schemas schemas/` to compile schemas after updating the xml file
 - `xgettext --from-code=UTF-8 --output=po/example.pot *.js` to generate pot (po template) file
+- `gnome-extensions pack --podir=po .` to pack extension with translations
