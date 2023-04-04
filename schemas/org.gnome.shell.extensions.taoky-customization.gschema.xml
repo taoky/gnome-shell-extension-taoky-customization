@@ -14,5 +14,8 @@
     <key name="monkey-patch-unredirect" type="b">
       <default>false</default>
     </key>
+    <key name="dont-enable-unredirect-on-extension-stop" type="b">
+      <default>false</default>
+    </key>
   </schema>
 </schemalist>

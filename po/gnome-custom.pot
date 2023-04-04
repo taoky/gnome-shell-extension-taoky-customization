@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-04 04:58+0800\n"
+"POT-Creation-Date: 2023-04-05 06:23+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,14 +34,28 @@ msgid "Disable minimize animation"
 msgstr ""
 
 #: prefs.js:54
-msgid "Miscellaneous"
+msgid "On extension stop"
 msgstr ""
 
 #: prefs.js:57
+msgid "Don't enable unredirect on extension stop"
+msgstr ""
+
+#: prefs.js:57
+msgid ""
+"Enabling unredirection on extension stop may leak window info after locking "
+"screen in multi-screen system."
+msgstr ""
+
+#: prefs.js:60
+msgid "Miscellaneous"
+msgstr ""
+
+#: prefs.js:63
 msgid "Monkey patch unredirection functions"
 msgstr ""
 
-#: prefs.js:58
+#: prefs.js:64
 msgid ""
 "Monkey-patch Meta.enable_unredirect_for_display() and Meta."
 "disable_unredirect_for_display() to no-op. This will only take effect on the "

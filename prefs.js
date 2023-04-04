@@ -50,6 +50,12 @@ function fillPreferencesWindow(window) {
     addBooleanRow(settings, _('Disable xwayland pointer gestures'), 'disable-xwayland-pointer-gestures', group_startup);
     addBooleanRow(settings, _('Disable minimize animation'), 'disable-minimize-animation', group_startup);
 
+    const group_stop = new Adw.PreferencesGroup();
+    group_stop.set_title(_('On extension stop'));
+    page.add(group_stop);
+
+    addBooleanRow(settings, _('Don\'t enable unredirect on extension stop'), 'dont-enable-unredirect-on-extension-stop', group_stop, _("Enabling unredirection on extension stop may leak window info after locking screen in multi-screen system."));
+
     const group_misc = new Adw.PreferencesGroup();
     group_misc.set_title(_('Miscellaneous'));
     page.add(group_misc);

@@ -95,6 +95,9 @@ class Extension {
             log ("Restoring Meta.disable_unredirect_for_display");
             Meta.disable_unredirect_for_display = this.meta_disable_unredirect_for_display;
         }
+        if (this.settings.get_value("dont-enable-unredirect-on-extension-stop").get_boolean()) {
+            this.disable_unredirect_count -= 1;
+        }
         for (let i = 0; i < this.disable_unredirect_count; i++) {
             log ("Enabling unredirect for global display");
             Meta.enable_unredirect_for_display(global.display);
