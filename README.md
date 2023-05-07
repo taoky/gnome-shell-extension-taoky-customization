@@ -2,7 +2,7 @@
 
 Customize GNOME for my personal usage
 
-Support: GNOME 43
+Support: GNOME 43, 44
 
 ## What does it do?
 

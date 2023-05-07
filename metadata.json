@@ -3,7 +3,7 @@
   "description": "Customize GNOME for my personal usage",
   "uuid": "gnome-custom@taoky.moe",
   "shell-version": [
-    "43"
+    "43", "44"
   ],
   "url": "https://github.com/taoky/gnome-shell-extension-taoky-customization",
   "version": "0.0.3"
