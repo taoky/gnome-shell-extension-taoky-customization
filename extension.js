@@ -18,10 +18,11 @@
 
 /* exported init */
 
-const { Meta, Gio, GLib } = imports.gi;
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-const WindowManager = imports.ui.windowManager;
+import Meta from 'gi://Meta';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
+import { WindowManager } from 'resource:///org/gnome/shell/ui/windowManager.js';
 
 function runCommand(cmd, comment) {
     let res = GLib.shell_parse_argv(cmd);
@@ -45,8 +46,9 @@ function runCommand(cmd, comment) {
     }
 }
 
-class Extension {
-    constructor() {
+export default class MyExtension extends Extension {
+    constructor(metadata) {
+        super(metadata);
         this.disable_unredirect_count = 0;
         this.executed_xwayland_pointer_gestures_disable = false;
         this.MINIMIZE_WINDOW_ANIMATION_TIME = null;
@@ -55,7 +57,7 @@ class Extension {
     }
 
     enable() {
-        this.settings = ExtensionUtils.getSettings('org.gnome.shell.extensions.taoky-customization');
+        this.settings = this.getSettings('org.gnome.shell.extensions.taoky-customization');
         if (this.settings.get_value("disable-unredirect").get_boolean()) {
             log ("Disabling unredirect for global display");
             Meta.disable_unredirect_for_display(global.display);
@@ -115,10 +117,3 @@ class Extension {
         }
     }
 }
-
-function init() {
-    log(`initializing ${Me.metadata.name}`);
-    ExtensionUtils.initTranslations(Me.metadata.uuid);
-    return new Extension();
-}
-
