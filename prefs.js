@@ -46,14 +46,14 @@ export default class MyExtensionPreferences extends ExtensionPreferences {
         group_stop.set_title(_('On extension stop'));
         page.add(group_stop);
 
-        addBooleanRow(settings, _('Don\'t enable unredirect on extension stop'), 'dont-enable-unredirect-on-extension-stop', group_stop, _("Enabling unredirection on extension stop may leak window info after locking screen in multi-screen system."));
+        // addBooleanRow(settings, _('Don\'t enable unredirect on extension stop'), 'dont-enable-unredirect-on-extension-stop', group_stop, _("Enabling unredirection on extension stop may leak window info after locking screen in multi-screen system."));
 
         const group_misc = new Adw.PreferencesGroup();
         group_misc.set_title(_('Miscellaneous'));
         page.add(group_misc);
 
-        addBooleanRow(settings, _('Monkey patch unredirection functions'),
-            'monkey-patch-unredirect', group_misc, _("Monkey-patch Meta.enable_unredirect_for_display() and Meta.disable_unredirect_for_display() to no-op. This will only take effect on the next extension startup."));
+        // addBooleanRow(settings, _('Monkey patch unredirection functions'),
+        //     'monkey-patch-unredirect', group_misc, _("Monkey-patch Meta.enable_unredirect_for_display() and Meta.disable_unredirect_for_display() to no-op. This will only take effect on the next extension startup."));
 
         // Add our page to the window
         window.add(page);

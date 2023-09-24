@@ -52,8 +52,8 @@ export default class MyExtension extends Extension {
         this.disable_unredirect_count = 0;
         this.executed_xwayland_pointer_gestures_disable = false;
         this.MINIMIZE_WINDOW_ANIMATION_TIME = null;
-        this.meta_enable_unredirect_for_display = null;
-        this.meta_disable_unredirect_for_display = null;
+        // this.meta_enable_unredirect_for_display = null;
+        // this.meta_disable_unredirect_for_display = null;
     }
 
     enable() {
@@ -73,33 +73,33 @@ export default class MyExtension extends Extension {
             this.MINIMIZE_WINDOW_ANIMATION_TIME = WindowManager.MINIMIZE_WINDOW_ANIMATION_TIME;
             WindowManager.MINIMIZE_WINDOW_ANIMATION_TIME = 0;
         }
-        if (this.settings.get_value("monkey-patch-unredirect").get_boolean()) {
-            log ("Monkey patching Meta.enable_unredirect_for_display and Meta.disable_unredirect_for_display");
-            this.meta_enable_unredirect_for_display = Meta.enable_unredirect_for_display;
-            Meta.enable_unredirect_for_display = function() {
-                // Avoid spamming log
-                // log ("Calling Meta.enable_unredirect_for_display() as no-op.");
-            }
-            this.meta_disable_unredirect_for_display = Meta.disable_unredirect_for_display;
-            Meta.disable_unredirect_for_display = function() {
-                // Avoid spamming log
-                // log ("Calling Meta.disable_unredirect_for_display() as no-op.");
-            }
-        }
+        // if (this.settings.get_value("monkey-patch-unredirect").get_boolean()) {
+        //     log ("Monkey patching Meta.enable_unredirect_for_display and Meta.disable_unredirect_for_display");
+        //     this.meta_enable_unredirect_for_display = Meta.enable_unredirect_for_display;
+        //     Meta.enable_unredirect_for_display = function() {
+        //         // Avoid spamming log
+        //         // log ("Calling Meta.enable_unredirect_for_display() as no-op.");
+        //     }
+        //     this.meta_disable_unredirect_for_display = Meta.disable_unredirect_for_display;
+        //     Meta.disable_unredirect_for_display = function() {
+        //         // Avoid spamming log
+        //         // log ("Calling Meta.disable_unredirect_for_display() as no-op.");
+        //     }
+        // }
     }
 
     disable() {
-        if (this.meta_enable_unredirect_for_display !== null) {
-            log ("Restoring Meta.enable_unredirect_for_display");
-            Meta.enable_unredirect_for_display = this.meta_enable_unredirect_for_display;
-        }
-        if (this.meta_disable_unredirect_for_display !== null) {
-            log ("Restoring Meta.disable_unredirect_for_display");
-            Meta.disable_unredirect_for_display = this.meta_disable_unredirect_for_display;
-        }
-        if (this.settings.get_value("dont-enable-unredirect-on-extension-stop").get_boolean()) {
-            this.disable_unredirect_count -= 1;
-        }
+        // if (this.meta_enable_unredirect_for_display !== null) {
+        //     log ("Restoring Meta.enable_unredirect_for_display");
+        //     Meta.enable_unredirect_for_display = this.meta_enable_unredirect_for_display;
+        // }
+        // if (this.meta_disable_unredirect_for_display !== null) {
+        //     log ("Restoring Meta.disable_unredirect_for_display");
+        //     Meta.disable_unredirect_for_display = this.meta_disable_unredirect_for_display;
+        // }
+        // if (this.settings.get_value("dont-enable-unredirect-on-extension-stop").get_boolean()) {
+        //     this.disable_unredirect_count -= 1;
+        // }
         for (let i = 0; i < this.disable_unredirect_count; i++) {
             log ("Enabling unredirect for global display");
             Meta.enable_unredirect_for_display(global.display);
