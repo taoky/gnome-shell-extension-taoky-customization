@@ -16,13 +16,11 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-/* exported init */
-
 import Meta from 'gi://Meta';
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
-import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
-import { WindowManager } from 'resource:///org/gnome/shell/ui/windowManager.js';
+import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
+import {WindowManager} from 'resource:///org/gnome/shell/ui/windowManager.js';
 
 function runCommand(cmd, comment) {
     let res = GLib.shell_parse_argv(cmd);
@@ -32,13 +30,12 @@ function runCommand(cmd, comment) {
         logError(`Glib.shell_parse_argv cannot parse cmd: ${cmd}`);
     } else {
         let proc = Gio.Subprocess.new(argv, Gio.SubprocessFlags.NONE);
-        proc.wait_check_async(null, (proc, result) => {
+        proc.wait_check_async(null, (proc_, result) => {
             try {
-                if (proc.wait_check_finish(result)) {
-                    log (`${comment} successfully executed`);
-                } else {
-                    logError (`the process to execute the ${comment} failed`);
-                }
+                if (proc_.wait_check_finish(result))
+                    log(`${comment} successfully executed`);
+                else
+                    logError(`the process to execute the ${comment} failed`);
             } catch (e) {
                 logError(e);
             }
@@ -58,18 +55,18 @@ export default class MyExtension extends Extension {
 
     enable() {
         this.settings = this.getSettings('org.gnome.shell.extensions.taoky-customization');
-        if (this.settings.get_value("disable-unredirect").get_boolean()) {
-            log ("Disabling unredirect for global display");
+        if (this.settings.get_value('disable-unredirect').get_boolean()) {
+            log('Disabling unredirect for global display');
             Meta.disable_unredirect_for_display(global.display);
             this.disable_unredirect_count += 1;
         }
-        if (this.settings.get_value("disable-xwayland-pointer-gestures").get_boolean()) {
-            log ("Disabling xwayland pointer gestures");
-            runCommand("sh -c 'xinput list --name-only | grep ^xwayland-pointer-gestures | xargs -n1 xinput disable'", "xwayland pointer gestures disable");
+        if (this.settings.get_value('disable-xwayland-pointer-gestures').get_boolean()) {
+            log('Disabling xwayland pointer gestures');
+            runCommand("sh -c 'xinput list --name-only | grep ^xwayland-pointer-gestures | xargs -n1 xinput disable'", 'xwayland pointer gestures disable');
             this.executed_xwayland_pointer_gestures_disable = true;
         }
-        if (this.settings.get_value("disable-minimize-animation").get_boolean()) {
-            log ("Disabling minimize animation");
+        if (this.settings.get_value('disable-minimize-animation').get_boolean()) {
+            log('Disabling minimize animation');
             this.MINIMIZE_WINDOW_ANIMATION_TIME = WindowManager.MINIMIZE_WINDOW_ANIMATION_TIME;
             WindowManager.MINIMIZE_WINDOW_ANIMATION_TIME = 0;
         }
@@ -101,17 +98,17 @@ export default class MyExtension extends Extension {
         //     this.disable_unredirect_count -= 1;
         // }
         for (let i = 0; i < this.disable_unredirect_count; i++) {
-            log ("Enabling unredirect for global display");
+            log('Enabling unredirect for global display');
             Meta.enable_unredirect_for_display(global.display);
         }
         this.disable_unredirect_count = 0;
         if (this.executed_xwayland_pointer_gestures_disable) {
-            log ("Enabling xwayland pointer gestures");
-            runCommand("sh -c 'xinput list --name-only | grep ^xwayland-pointer-gestures | xargs -n1 xinput enable'", "xwayland pointer gestures enable");
+            log('Enabling xwayland pointer gestures');
+            runCommand("sh -c 'xinput list --name-only | grep ^xwayland-pointer-gestures | xargs -n1 xinput enable'", 'xwayland pointer gestures enable');
             this.executed_xwayland_pointer_gestures_disable = false;
         }
         if (this.MINIMIZE_ANIMATION_TIME !== null) {
-            log (`Restoring minimize animation (time to ${this.MINIMIZE_WINDOW_ANIMATION_TIME})`);
+            log(`Restoring minimize animation (time to ${this.MINIMIZE_WINDOW_ANIMATION_TIME})`);
             WindowManager.MINIMIZE_WINDOW_ANIMATION_TIME = this.MINIMIZE_WINDOW_ANIMATION_TIME;
             this.MINIMIZE_WINDOW_ANIMATION_TIME = null;
         }

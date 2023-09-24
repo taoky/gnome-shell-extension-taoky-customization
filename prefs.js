@@ -1,11 +1,11 @@
 import Adw from 'gi://Adw';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
-import { ExtensionPreferences, gettext as _ } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
 
 function addBooleanRow(settings, title, name, group, subtitle = null) {
-    const row = new Adw.ActionRow({ title });
+    const row = new Adw.ActionRow({title});
     group.add(row);
 
     const toggle = new Gtk.Switch({
@@ -21,9 +21,8 @@ function addBooleanRow(settings, title, name, group, subtitle = null) {
 
     row.add_suffix(toggle);
     row.activatable_widget = toggle;
-    if (subtitle) {
+    if (subtitle)
         row.subtitle = subtitle;
-    }
 }
 
 export default class MyExtensionPreferences extends ExtensionPreferences {
@@ -31,7 +30,7 @@ export default class MyExtensionPreferences extends ExtensionPreferences {
         // Use the same GSettings schema as in extension.js
         const settings = this.getSettings(
             'org.gnome.shell.extensions.taoky-customization');
-        
+
         // Create a preferences page and group
         const page = new Adw.PreferencesPage();
         const group_startup = new Adw.PreferencesGroup();
