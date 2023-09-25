@@ -4,7 +4,7 @@ import Gtk from 'gi://Gtk';
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
 
-function addBooleanRow(settings, title, name, group, subtitle = null) {
+function addBooleanRow({settings, title, name, group, subtitle = null, disabled = false}) {
     const row = new Adw.ActionRow({title});
     group.add(row);
 
@@ -23,6 +23,7 @@ function addBooleanRow(settings, title, name, group, subtitle = null) {
     row.activatable_widget = toggle;
     if (subtitle)
         row.subtitle = subtitle;
+    row.set_sensitive(!disabled);
 }
 
 export default class MyExtensionPreferences extends ExtensionPreferences {
@@ -37,9 +38,19 @@ export default class MyExtensionPreferences extends ExtensionPreferences {
         group_startup.set_title(_('On extension startup'));
         page.add(group_startup);
 
-        addBooleanRow(settings, _('Disable unredirection'), 'disable-unredirect', group_startup);
-        addBooleanRow(settings, _('Disable xwayland pointer gestures'), 'disable-xwayland-pointer-gestures', group_startup);
-        addBooleanRow(settings, _('Disable minimize animation'), 'disable-minimize-animation', group_startup);
+        addBooleanRow({
+            settings, title: _('Disable unredirection'),
+            name: 'disable-unredirect', group: group_startup,
+        });
+        addBooleanRow({
+            settings, title: _('Disable xwayland pointer gestures'),
+            name: 'disable-xwayland-pointer-gestures', group: group_startup,
+        });
+        addBooleanRow({
+            settings, title: _('Disable minimize animation'),
+            name: 'disable-minimize-animation', group: group_startup,
+            subtitle: 'This no longer works in GNOME 45', disabled: true,
+        });
 
         const group_stop = new Adw.PreferencesGroup();
         group_stop.set_title(_('On extension stop'));
