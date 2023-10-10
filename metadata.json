@@ -2,9 +2,8 @@
   "name": "taoky's GNOME customization extension",
   "description": "Customize GNOME for my personal usage",
   "uuid": "gnome-custom@taoky.moe",
-  "shell-version": [
-    "43", "44"
-  ],
+  "shell-version": [ "45" ],
+  "session-modes": ["user", "unlock-dialog"],
   "url": "https://github.com/taoky/gnome-shell-extension-taoky-customization",
-  "version": "0.0.3"
+  "version": "0.0.4"
 }
