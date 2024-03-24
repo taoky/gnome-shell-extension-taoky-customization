@@ -5,5 +5,5 @@
   "shell-version": [ "45", "46" ],
   "session-modes": ["user", "unlock-dialog"],
   "url": "https://github.com/taoky/gnome-shell-extension-taoky-customization",
-  "version": "0.0.4"
+  "version": "0.0.5"
 }
