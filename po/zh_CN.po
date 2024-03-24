@@ -30,10 +30,6 @@ msgstr "关闭 unredirection 特性"
 msgid "Disable xwayland pointer gestures"
 msgstr "关闭 xwayland 下的鼠标手势"
 
-#: prefs.js:51
-msgid "Disable minimize animation"
-msgstr "关闭最小化动画"
-
 #: prefs.js:54
 msgid "On extension stop"
 msgstr "在扩展停止时"

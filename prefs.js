@@ -46,11 +46,6 @@ export default class MyExtensionPreferences extends ExtensionPreferences {
             settings, title: _('Disable xwayland pointer gestures'),
             name: 'disable-xwayland-pointer-gestures', group: group_startup,
         });
-        addBooleanRow({
-            settings, title: _('Disable minimize animation'),
-            name: 'disable-minimize-animation', group: group_startup,
-            subtitle: 'This no longer works in GNOME 45', disabled: true,
-        });
 
         const group_stop = new Adw.PreferencesGroup();
         group_stop.set_title(_('On extension stop'));

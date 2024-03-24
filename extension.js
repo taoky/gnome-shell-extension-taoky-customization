@@ -47,7 +47,6 @@ export default class MyExtension extends Extension {
         super(metadata);
         this.disable_unredirect_count = 0;
         this.executed_xwayland_pointer_gestures_disable = false;
-        // this.MINIMIZE_WINDOW_ANIMATION_TIME = null;
         // this.meta_enable_unredirect_for_display = null;
         // this.meta_disable_unredirect_for_display = null;
     }
@@ -64,11 +63,7 @@ export default class MyExtension extends Extension {
             runCommand("sh -c 'xinput list --name-only | grep ^xwayland-pointer-gestures | xargs -n1 xinput disable'", 'xwayland pointer gestures disable');
             this.executed_xwayland_pointer_gestures_disable = true;
         }
-        // if (this.settings.get_value('disable-minimize-animation').get_boolean()) {
-        //     log('Disabling minimize animation');
-        //     this.MINIMIZE_WINDOW_ANIMATION_TIME = WindowManager.MINIMIZE_WINDOW_ANIMATION_TIME;
-        //     WindowManager.MINIMIZE_WINDOW_ANIMATION_TIME = 0;
-        // }
+
         // if (this.settings.get_value("monkey-patch-unredirect").get_boolean()) {
         //     log ("Monkey patching Meta.enable_unredirect_for_display and Meta.disable_unredirect_for_display");
         //     this.meta_enable_unredirect_for_display = Meta.enable_unredirect_for_display;
@@ -106,10 +101,5 @@ export default class MyExtension extends Extension {
             runCommand("sh -c 'xinput list --name-only | grep ^xwayland-pointer-gestures | xargs -n1 xinput enable'", 'xwayland pointer gestures enable');
             this.executed_xwayland_pointer_gestures_disable = false;
         }
-        // if (this.MINIMIZE_ANIMATION_TIME !== null) {
-        //     log(`Restoring minimize animation (time to ${this.MINIMIZE_WINDOW_ANIMATION_TIME})`);
-        //     WindowManager.MINIMIZE_WINDOW_ANIMATION_TIME = this.MINIMIZE_WINDOW_ANIMATION_TIME;
-        //     this.MINIMIZE_WINDOW_ANIMATION_TIME = null;
-        // }
     }
 }
