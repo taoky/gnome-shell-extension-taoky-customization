@@ -1,5 +1,7 @@
 # gnome-shell-extension-taoky-customization
 
+**I'm not using this currently as all quirks in the extension are all unnecessary for now.**
+
 Customize GNOME for my personal usage
 
 Support: GNOME 45, 46
